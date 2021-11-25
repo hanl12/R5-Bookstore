@@ -1,7 +1,7 @@
 import React from 'react'
 import {render, waitFor, fireEvent, screen} from '@testing-library/react'
 import axiosMock from 'axios'
-import SearchInput from './'
+import SearchInput from '.'
 
 const book = {
   id: 'SqikDwAAQBAJ',

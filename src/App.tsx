@@ -1,21 +1,14 @@
 import React from 'react'
-import SearchInput from './components/SearchInput'
-import {BookType} from './components/Book'
-import Books from './components/Books'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import GoogleBooks from './containers/GoogleBooks'
 
-interface Response {
-  data?: {
-    items: BookType[]
-  }
-}
-
-const App = () =>  {
-  const [response, setResponse] = React.useState<Response>({})
+const App = () => {
   return (
-    <div>
-      <SearchInput setResponse={setResponse} />
-	{response.data && <Books books={response.data.items} /> }
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<GoogleBooks />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
