@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
+import { BookSType } from '../../components/Bookstore/Book'
+import BooksST from '../../components/Bookstore/Books'
 import SearchInputBS from '../../components/Bookstore/SearchInputBS'
 
 interface Response {
-    data?: {
-        docs: any
-    }
+    data?: BookSType[]
 }
 
 const Bookstore = () => {
@@ -12,6 +12,7 @@ const Bookstore = () => {
     return (
         <div>
             <SearchInputBS setResponse= {setResponse} response= {response} />
+            {response?.data && <BooksST books={response.data} />}
         </div>
     )
 }
