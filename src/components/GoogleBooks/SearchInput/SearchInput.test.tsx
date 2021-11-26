@@ -1,7 +1,9 @@
 import React from 'react'
-import {render, waitFor, fireEvent, screen} from '@testing-library/react'
-import axiosMock from 'axios'
+import { render, waitFor, fireEvent, screen } from '@testing-library/react'
 import SearchInput from '.'
+import axios from 'axios';
+jest.mock('axios');
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 const book = {
   id: 'SqikDwAAQBAJ',
@@ -16,39 +18,28 @@ const book = {
   }
 }
 
-test('SearchInput: Should get books when SearchInput is mounted' ,async () => {
+describe('<SearchInput />', () => {
   const setResponse = jest.fn()
-  const books = {items: [book]}
-  const response = {data: books}
-  axiosMock.get.mockResolvedValue(response)
+  const books = { items: [book] }
+  const response = { data: books }
 
-  render(<SearchInput setResponse={setResponse} />)
-  await waitFor(() => {
-    expect(setResponse).toBeCalledWith(response)
+  beforeEach(async () => {
+    mockedAxios.get.mockResolvedValue(response)
+    render(<SearchInput setResponse={setResponse} />)
+    await waitFor(() => {
+      expect(setResponse).toBeCalledWith(response)
+    })
   })
 
-})
+  test('SearchInput: Should get books when SearchInput is mounted', async () => {
+    fireEvent.change(screen.getByPlaceholderText(/Buscar/i),
+      { target: { value: 'javascript' } }
+    )
 
+    fireEvent.click(screen.getByText('Buscar'))
 
-test('SearchInput: Should get books when click on Buscar', async () => {
-  const setResponse = jest.fn()
-  const books = {items: [book]}
-  const response = {data: books}
-  axiosMock.get.mockResolvedValue(response)
-
-  render(<SearchInput setResponse={setResponse} />)
-  await waitFor(() => {
-    expect(setResponse).toBeCalledWith(response)
+    await waitFor(() => {
+      expect(setResponse).toBeCalledTimes(2)
+    })
   })
-
-  fireEvent.change(screen.getByPlaceholderText(/Buscar/i),
-    { target: { value: 'javascript' } }
-  )
-
-  fireEvent.click(screen.getByText('Buscar'))
-
-  await waitFor(() => {
-    expect(setResponse).toBeCalledTimes(2)
-  })
-
 })
