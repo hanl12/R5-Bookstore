@@ -34,7 +34,7 @@ const SearchInputBS = ({ response, setResponse }: SearchInputProps) => {
 
     return (
         <div className="search">
-            <h1>OPEN LIBRARY BOOKS</h1>
+            <h1>LIBRA BOOKS</h1>
             <input type="text" className="search-input" placeholder="Buscar un libro" value={searchValue} onChange={handleInputChange} />
             <button className="search-button" onClick={() => handleClicTest()}>Buscar</button>
         </div>
