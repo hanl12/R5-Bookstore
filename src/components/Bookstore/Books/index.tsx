@@ -1,12 +1,12 @@
 import React from 'react'
-import BookSt, { BookSType } from '../Book'
+import BookSt, { BsBookType} from '../Book'
 import './books.css'
 
-export interface BooksSProps {
-  books: BookSType[]
+export interface BsBooksProps {
+  books: BsBookType[]
 }
 
-const BooksST = ({ books }: BooksSProps) => {
+const BsBooks = ({ books }: BsBooksProps) => {
   return (
     <div className="books">
       {books.map(book => <BookSt key={book.ID} book={book} />)} 
@@ -14,4 +14,4 @@ const BooksST = ({ books }: BooksSProps) => {
   )
 }
 
-export default BooksST
+export default BsBooks

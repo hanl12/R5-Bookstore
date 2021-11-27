@@ -15,7 +15,10 @@ export interface BookProps {
   book: BookType
 }
 
-const Book = ({ book }: BookProps) => (
+
+
+const Book = ({ book }: BookProps) => {
+  return(
   <div className="book">
     <div className="book-image">
       {book.volumeInfo.imageLinks ? <img
@@ -25,6 +28,6 @@ const Book = ({ book }: BookProps) => (
     </div>
     <p className="book-title">{book.volumeInfo.title}</p>
   </div>
-)
+)}
 
 export default Book

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { BookSType } from '../../components/Bookstore/Book'
+import { BsBookType } from '../../components/Bookstore/Book'
 import BooksST from '../../components/Bookstore/Books'
 import SearchInputBS from '../../components/Bookstore/SearchInputBS'
 
 interface Response {
-    data?: BookSType[]
+    data?: BsBookType[]
 }
 
 const Bookstore = () => {
