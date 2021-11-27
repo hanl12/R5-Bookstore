@@ -3,11 +3,10 @@
   width: 100%;
   display: inline-block;
   border-radius: 10px;
-  cursor: pointer;
 }
 
-.book:hover {
-  background-color: #f0edf5;
+.book-image:hover {
+  background-color: #d5d4d6;
 }
 
 .book-image {
@@ -16,6 +15,7 @@
   padding: 2rem;
   border-radius: 10px;
   background-color: #f0edf5;
+  cursor: pointer;
 }
 
 .book-image img {
@@ -47,4 +47,25 @@
 .formFlex {
   width: 100%;
   display: flex;
+}
+
+.fav-span {
+  margin: 15px;
+}
+
+.fav-icon--red{
+  color: rgb(252, 65, 65);
+  width: 25px;
+  height: 25px;
+}
+
+.fav-icon{
+  color: #878787;
+  width: 25px;
+  height: 25px;
+}
+
+.fav-span:hover {
+  cursor: pointer;
+  color: rgb(216, 133, 133);
 }
