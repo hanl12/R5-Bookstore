@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Button as Btn } from 'react-bootstrap';
+import { Modal, Button as Btn, Form } from 'react-bootstrap';
 import useLocalStorage from '../../../hooks/useLocalStorage'
 import './book.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -41,6 +41,11 @@ function MyVerticallyCenteredModal(props: any) {
         <p>
           Descripción: {props.book.content_short}
         </p>
+        <Form className="formFlex">
+          <Form.Label htmlFor="com">Añadir comentario:</Form.Label>
+          <Form.Control type="text" />
+          <Btn>+</Btn>
+        </Form>
       </Modal.Body>
     </Modal>
   );
@@ -51,7 +56,7 @@ const BsBook = ({ book }: BsBookProps) => {
   const [modalShow, setModalShow] = React.useState(false);
   const [favs, setFavs] = useLocalStorage("favs", [{}])
 
-  //const [comments, setComments] = useLocalStorage("comments", [{}])
+  const [comments, setComments] = useLocalStorage("comments", [{}])
 
   const addFav = (ID: String, title: String) => {
     const newFav = {
@@ -59,6 +64,19 @@ const BsBook = ({ book }: BsBookProps) => {
       title: title
     };
     setFavs([...favs, newFav]);
+  }
+
+  const removeFav = (ID: String) => {
+    const newFavs = favs.filter((t:any) => t.id !== ID)
+    setFavs(newFavs)
+  }
+
+  const addComment = (ID: String, comment: String) => {
+    const newComment = {
+      id: ID,
+      comment: comment
+    };
+    setComments([...comments, newComment]);
   }
 
   return (

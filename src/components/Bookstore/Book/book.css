@@ -43,3 +43,8 @@
   flex-direction: column;
   align-items: center;
 }
+
+.formFlex {
+  width: 100%;
+  display: flex;
+}
