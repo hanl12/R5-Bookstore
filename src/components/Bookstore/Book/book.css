@@ -69,3 +69,7 @@
   cursor: pointer;
   color: rgb(216, 133, 133);
 }
+
+.form-div {
+  display: flex;
+}

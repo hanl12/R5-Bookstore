@@ -1,5 +1,5 @@
-import React from 'react'
-import { Modal, Button as Btn, Form } from 'react-bootstrap';
+import React, { ChangeEvent, useState } from 'react'
+import { Modal, Button as Btn, Form, FloatingLabel } from 'react-bootstrap';
 import useLocalStorage from '../../../hooks/useLocalStorage'
 import './book.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,6 +13,7 @@ export type BsBookType = {
   content_short: string
   thumbnail: string
   isFav: boolean
+  comment: String
 }
 
 export interface BsBookProps {
@@ -20,6 +21,11 @@ export interface BsBookProps {
 }
 
 function MyVerticallyCenteredModal(props: any) {
+  const [comValue, setComValue] = useState('')
+
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+    setComValue(event.target.value)
+  }
   return (
     <Modal
       {...props}
@@ -43,22 +49,20 @@ function MyVerticallyCenteredModal(props: any) {
         <p>
           Descripción: {props.book.content_short}
         </p>
-        <Form className="formFlex">
-          <Form.Label htmlFor="com">Agregar comentario:</Form.Label>
-          <Form.Control type="text" />
-          <Btn>+</Btn>
-        </Form>
+        {props.book.comment ? <p>Tu comentario: {props.book.comment}</p> : ''}
+        {props.book.comment ? '' : <FloatingLabel controlId="floatingTextarea" label="Comentario" className="mb-3, form-div" >
+          <Form.Control as="textarea" placeholder="Leave a comment here" value={comValue} onChange={handleInputChange} />
+          <Btn onClick={() => props.addComment(props.book.ID, comValue)}>Agregar</Btn>
+        </FloatingLabel>}
       </Modal.Body>
     </Modal>
   );
 }
 
-// onClick={props.addFav(props.book.ID, props.book.title)}
-
 const BsBook = ({ book }: BsBookProps) => {
   const [modalShow, setModalShow] = React.useState(false);
-  const [favs, setFavs] = useLocalStorage("favs", [{}])
 
+  const [favs, setFavs] = useLocalStorage("favs", [{}])
   const [comments, setComments] = useLocalStorage("comments", [{}])
 
   const addFav = (ID: String, title: String) => {
@@ -69,10 +73,10 @@ const BsBook = ({ book }: BsBookProps) => {
     setFavs([...favs, newFav]);
   }
 
-  const removeFav = (ID: String) => {
-    const newFavs = favs.filter((t: any) => t.id !== ID)
-    setFavs(newFavs)
-  }
+  // const removeFav = (ID: String) => {
+  //   const newFavs = favs.filter((t: any) => t.id !== ID)
+  //   setFavs(newFavs)
+  // }
 
   const addComment = (ID: String, comment: String) => {
     const newComment = {
@@ -88,7 +92,15 @@ const BsBook = ({ book }: BsBookProps) => {
 
   return (
     <>
-      {book.isFav = favs.filter(function (t:any) { return (t.id === book.ID) }).length>0}
+      {book.isFav = favs.filter(function (t: any) { return (t.id === book.ID) }).length > 0}
+      {comments.filter(
+        function (t: any) {
+          if (t.id === book.ID) {
+            book.comment = t.comment;
+          }
+          return null;
+        }
+      )}
       <div className="book" >
         <div className="book-image" onClick={() => setModalShow(true)}>
           {book.thumbnail ? <img
@@ -98,7 +110,7 @@ const BsBook = ({ book }: BsBookProps) => {
         </div>
         <p className="book-title">{book.title}</p>
         <span className="fav-span" onClick={handleClic}>
-          <AiFillHeart className={`fav-icon${book.isFav ? '--red' : ''}`} /> 
+          <AiFillHeart className={`fav-icon${book.isFav ? '--red' : ''}`} />
         </span>
       </div>
 
@@ -106,7 +118,7 @@ const BsBook = ({ book }: BsBookProps) => {
         show={modalShow}
         onHide={() => setModalShow(false)}
         book={book}
-        removeFav={removeFav}
+        addComment={addComment}
       />
     </>
   )

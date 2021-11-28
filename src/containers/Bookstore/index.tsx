@@ -11,7 +11,7 @@ const Bookstore = () => {
     const [response, setResponse] = useState<Response>()
     return (
         <div>
-            <SearchInputBS setResponse= {setResponse} response= {response} />
+            <SearchInputBS setResponse= {setResponse} />
             {response?.data && <BooksST books={response.data} />}
         </div>
     )
