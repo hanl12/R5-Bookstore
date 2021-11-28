@@ -15,8 +15,6 @@ export interface BookProps {
   book: BookType
 }
 
-
-
 const Book = ({ book }: BookProps) => {
   return(
   <div className="book">

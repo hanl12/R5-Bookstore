@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BsBookType } from '../../components/Bookstore/Book'
-import BooksST from '../../components/Bookstore/Books'
+import BsBooks from '../../components/Bookstore/Books'
 import SearchInputBS from '../../components/Bookstore/SearchInputBS'
 
 interface Response {
@@ -12,7 +12,7 @@ const Bookstore = () => {
     return (
         <div>
             <SearchInputBS setResponse= {setResponse} />
-            {response?.data && <BooksST books={response.data} />}
+            {response?.data && <BsBooks books={response.data} />}
         </div>
     )
 }

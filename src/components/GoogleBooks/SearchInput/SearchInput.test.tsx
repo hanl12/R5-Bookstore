@@ -1,9 +1,8 @@
 import React from 'react'
 import { render, waitFor, fireEvent, screen } from '@testing-library/react'
 import SearchInput from '.'
-import axios from 'axios';
-jest.mock('axios');
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+import axiosMock from 'axios';
+const mockedAxios = axiosMock as jest.Mocked<typeof axiosMock>;
 
 const book = {
   id: 'SqikDwAAQBAJ',

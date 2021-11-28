@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useState } from 'react'
 import { Modal, Button as Btn, Form, FloatingLabel } from 'react-bootstrap';
-import useLocalStorage from '../../../hooks/useLocalStorage'
 import './book.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AiFillHeart } from 'react-icons/ai'
+import useLocalData from '../../../hooks/useLocaData';
 
 
 export type BsBookType = {
@@ -62,38 +62,16 @@ function MyVerticallyCenteredModal(props: any) {
 const BsBook = ({ book }: BsBookProps) => {
   const [modalShow, setModalShow] = React.useState(false);
 
-  const [favs, setFavs] = useLocalStorage("favs", [{}])
-  const [comments, setComments] = useLocalStorage("comments", [{}])
-
-  const addFav = (ID: String, title: String) => {
-    const newFav = {
-      id: ID,
-      title: title
-    };
-    setFavs([...favs, newFav]);
-  }
-
-  // const removeFav = (ID: String) => {
-  //   const newFavs = favs.filter((t: any) => t.id !== ID)
-  //   setFavs(newFavs)
-  // }
-
-  const addComment = (ID: String, comment: String) => {
-    const newComment = {
-      id: ID,
-      comment: comment
-    };
-    setComments([...comments, newComment]);
-  }
+  const data = useLocalData();
 
   const handleClic = () => {
-    addFav(book.ID, book.title)
+    data.addFav(book.ID, book.title)
   }
 
   return (
     <>
-      {book.isFav = favs.filter(function (t: any) { return (t.id === book.ID) }).length > 0}
-      {comments.filter(
+      {book.isFav = data.favs.filter(function (t: any) { return (t.id === book.ID) }).length > 0}
+      {data.comments.filter(
         function (t: any) {
           if (t.id === book.ID) {
             book.comment = t.comment;
@@ -118,7 +96,7 @@ const BsBook = ({ book }: BsBookProps) => {
         show={modalShow}
         onHide={() => setModalShow(false)}
         book={book}
-        addComment={addComment}
+        addComment={data.addComment}
       />
     </>
   )
