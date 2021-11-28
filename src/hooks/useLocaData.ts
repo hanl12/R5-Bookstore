@@ -20,16 +20,17 @@ const useLocalData = () => {
     setComments([...comments, newComment]);
   };
 
-  // const removeFav = (ID: String) => {
-  //   const newFavs = favs.filter((t: any) => t.id !== ID)
-  //   setFavs(newFavs)
-  // }
+  const removeFav = (ID: String) => {
+    const newFavs = favs.filter((t: any) => t.id !== ID)
+    setFavs(newFavs)
+  }
   
   return {
       favs,
       comments,
       addFav,
-      addComment
+      addComment,
+      removeFav
   }
 };
 
