@@ -1,15 +1,8 @@
 import React, { ChangeEvent, useState } from 'react'
 import { Modal, Button as Btn, Form, FloatingLabel } from 'react-bootstrap';
-import {BsBookType} from './index'
 
-interface modalProps {
-  book: BsBookType
-  addcomment: Function
-  show: Boolean
-  onHide: Function
-}
 
-export default function DetailsModal(props: modalProps) {
+export default function DetailsModal(props: any) {
     const [comValue, setComValue] = useState('')
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement>) {

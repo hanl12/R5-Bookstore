@@ -1,19 +1,16 @@
 import React, { ChangeEvent, useState } from 'react'
 import { Modal, Button as Btn, Form, FloatingLabel } from 'react-bootstrap';
-import {BsBookType} from './index'
 
-interface modalProps {
-  book: BsBookType
-  addcomment: Function
-  show: Boolean
-  onHide: Function
-}
 
-export default function DetailsModal(props: modalProps) {
+export default function DetailsModal(props: any) {
     const [comValue, setComValue] = useState('')
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
       setComValue(event.target.value)
+    }
+
+    function handleClic() {
+      props.addcomment(props.book.ID, comValue)
     }
 
     return (
@@ -42,7 +39,7 @@ export default function DetailsModal(props: modalProps) {
           {props.book.comment ? <p>Tu comentario: {props.book.comment}</p> : ''}
           {props.book.comment ? '' : <FloatingLabel controlId="floatingTextarea" label="Comentario" className="mb-3, form-div" >
             <Form.Control as="textarea" placeholder="Leave a comment here" value={comValue} onChange={handleInputChange} />
-            <Btn onClick={() => props.addcomment(props.book.ID, comValue)}>Agregar</Btn>
+            <Btn onClick={() => handleClic}>Agregar</Btn>
           </FloatingLabel>}
         </Modal.Body>
       </Modal>
