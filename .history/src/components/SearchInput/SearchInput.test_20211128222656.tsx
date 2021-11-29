@@ -21,12 +21,10 @@ describe('<SearchInput />', () => {
   const setResponse = jest.fn()
   const books = { items: [book] }
   const response = { data: books }
-  const setSearch = jest.fn()
-  
 
   beforeEach(async () => {
     mockedAxios.get.mockResolvedValue(response)
-    render(<SearchInput setSearch={setSearch} title={"Java"} />)
+    render(<SearchInput setResponse={setResponse} />)
     await waitFor(() => {
       expect(setResponse).toBeCalledWith(response)
     })

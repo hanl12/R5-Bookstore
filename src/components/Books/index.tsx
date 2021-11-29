@@ -1,6 +1,6 @@
 import React from 'react'
-import BsBook, { BsBookType } from '../../Bookstore/Book'
-import Book , { BookType }from '../Book'
+import BsBook, { BsBookType } from '../Bookstore/Book'
+import Book , { BookType }from '../GoogleBooks/Book'
 import './books.css'
 
 export interface BooksProps {

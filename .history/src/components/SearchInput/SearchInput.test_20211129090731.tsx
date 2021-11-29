@@ -18,17 +18,17 @@ const book = {
 }
 
 describe('<SearchInput />', () => {
-  const setResponse = jest.fn()
+  const setSearch = jest.fn()
   const books = { items: [book] }
   const response = { data: books }
-  const setSearch = jest.fn()
-  
+  const title = "GOOGLE BOOKS"
+  const search = "Java"
 
   beforeEach(async () => {
     mockedAxios.get.mockResolvedValue(response)
-    render(<SearchInput setSearch={setSearch} title={"Java"} />)
+    render(<SearchInput setSearch={setSearch} title={title} />)
     await waitFor(() => {
-      expect(setResponse).toBeCalledWith(response)
+      expect(setSearch).toBeCalledWith(books)
     })
   })
 
@@ -40,7 +40,7 @@ describe('<SearchInput />', () => {
     fireEvent.click(screen.getByText('Buscar'))
 
     await waitFor(() => {
-      expect(setResponse).toBeCalledTimes(2)
+      expect(setSearch).toBeCalledTimes(2)
     })
   })
 })
