@@ -28,7 +28,7 @@ const GoogleBooks = () => {
 
     return (
         <div>
-            <Link to="/bookstore"><Btn>Ir a Bookstore</Btn></Link>
+            <Link to="/bookstore"><Btn>Ir a GoogleBooks</Btn></Link>
             <SearchInput setSearch={setSearch}  title={"GOOGLE BOOKS"}/>
             {response.data && <Books books={response.data.items} />}
         </div>

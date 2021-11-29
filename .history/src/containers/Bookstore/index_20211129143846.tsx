@@ -3,7 +3,6 @@ import { Spinner, Button as Btn } from 'react-bootstrap'
 import axios from 'axios';
 import SearchInput from '../../components/SearchInput';
 import Books from '../../components/Books';
-import { Link } from 'react-router-dom';
 
 interface Response {
     data?: [{
@@ -32,8 +31,8 @@ const Bookstore = () => {
 
     return (
         <div>
-            <Link to="/"><Btn>Ir a GoogleBooks</Btn></Link>
-            <SearchInput setSearch={setSearch} title={"BOOKSTORE"} />
+            <Btn>Ir a BOOKSTORE</Btn>
+            <SearchInput setSearch={setSearch} title={"BOOKSTORE"}/>
             {response?.data ? <Books booksBS={response.data} /> : <Spinner style={{ position: 'absolute', top: '50%', left: '50%' }} animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
             </Spinner>}
