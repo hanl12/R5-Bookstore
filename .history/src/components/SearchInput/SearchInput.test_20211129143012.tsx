@@ -30,4 +30,16 @@ describe('<SearchInput />', () => {
 
     expect(pageTitle).toBeInTheDocument()
   })
+
+  // test('SearchInput: Title must be', async () => {
+  //   fireEvent.change(screen.getByPlaceholderText(/Buscar/i),
+  //     { target: { value: 'javascript' } }
+  //   )
+
+  //   fireEvent.click(screen.getByText('Buscar'))
+
+  //   await waitFor(() => {
+  //     expect(setResponse).toBeCalledTimes(2)
+  //   })
+  // })
 })
