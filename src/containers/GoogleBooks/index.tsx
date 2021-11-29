@@ -22,12 +22,11 @@ const GoogleBooks = () => {
     
       React.useEffect(() => {
         getBooks(search)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [search])
 
     return (
         <div>
-            <SearchInput setSearch={setSearch} />
+            <SearchInput setSearch={setSearch}  title={"GOOGLE BOOKS"}/>
             {response.data && <Books books={response.data.items} />}
         </div>
     )

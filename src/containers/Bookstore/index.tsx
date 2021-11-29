@@ -27,12 +27,11 @@ const Bookstore = () => {
 
     useEffect(() => {
         getBooks(search);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search])
 
     return (
         <div>
-            <SearchInput setSearch={setSearch} />
+            <SearchInput setSearch={setSearch} title={"BOOKSTORE"}/>
             {response?.data ? <BsBooks books={response.data} /> : <Spinner style={{ position: 'absolute', top: '50%', left: '50%' }} animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
             </Spinner>}
