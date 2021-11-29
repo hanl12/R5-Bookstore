@@ -14,6 +14,7 @@ const SearchInput = ({ setResponse }: SearchInputProps) => {
   }
 
   function getBooks(title: string = 'javascript') {
+    setResponse({});
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}`)
       .then((response) => setResponse(response))
   }

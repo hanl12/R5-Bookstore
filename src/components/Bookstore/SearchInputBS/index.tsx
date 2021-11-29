@@ -14,6 +14,7 @@ const SearchInputBS = ({ setResponse }: SearchInputProps) => {
     }
 
     function getBooks(title: string = 'javascript') {
+        setResponse({})
         axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${title}`).then((response) => setResponse(response))
     }
 
