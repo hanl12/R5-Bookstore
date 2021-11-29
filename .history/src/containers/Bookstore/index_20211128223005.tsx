@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap'
 import axios from 'axios';
+import BsBooks from '../../components/Bookstore/Books'
 import SearchInput from '../../components/SearchInput';
-import Books from '../../components/GoogleBooks/Books';
 
 interface Response {
     data?: [{
@@ -32,7 +32,7 @@ const Bookstore = () => {
     return (
         <div>
             <SearchInput setSearch={setSearch} title={"BOOKSTORE"}/>
-            {response?.data ? <Books booksBS={response.data} /> : <Spinner style={{ position: 'absolute', top: '50%', left: '50%' }} animation="border" role="status">
+            {response?.data ? <BsBooks books={response.data} /> : <Spinner style={{ position: 'absolute', top: '50%', left: '50%' }} animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
             </Spinner>}
         </div>
