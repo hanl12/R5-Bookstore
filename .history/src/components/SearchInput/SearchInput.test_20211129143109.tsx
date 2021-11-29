@@ -15,16 +15,4 @@ describe('<SearchInput />', () => {
 
     expect(pageTitle).toBeInTheDocument()
   })
-
-  test('SearchInput: Testing events', async () => {
-    fireEvent.change(screen.getByPlaceholderText(/Buscar/i),
-      { target: { value: 'javascript' } }
-    )
-
-    fireEvent.click(screen.getByText('Buscar'))
-
-    await waitFor(() => {
-      expect(setSearch).toBeCalledTimes(1)
-    })
-  })
 })

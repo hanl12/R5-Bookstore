@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, waitFor, fireEvent, screen } from '@testing-library/react'
 import SearchInput from '.'
+import axiosMock from 'axios';
 
 describe('<SearchInput />', () => {
   const setSearch = jest.fn()
@@ -14,17 +15,5 @@ describe('<SearchInput />', () => {
     const pageTitle = await screen.findByText(/java/i)
 
     expect(pageTitle).toBeInTheDocument()
-  })
-
-  test('SearchInput: Testing events', async () => {
-    fireEvent.change(screen.getByPlaceholderText(/Buscar/i),
-      { target: { value: 'javascript' } }
-    )
-
-    fireEvent.click(screen.getByText('Buscar'))
-
-    await waitFor(() => {
-      expect(setSearch).toBeCalledTimes(1)
-    })
   })
 })
