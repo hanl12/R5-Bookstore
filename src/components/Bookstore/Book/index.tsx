@@ -60,7 +60,7 @@ const BsBook = ({ book }: BsBookProps) => {
         show={modalShow}
         onHide={() => setModalShow(false)}
         book={book}
-        addComment={useData.addComment}
+        addcomment={useData.addComment}
       />
     </>
   )

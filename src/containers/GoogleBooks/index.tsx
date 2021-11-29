@@ -14,10 +14,10 @@ const GoogleBooks = () => {
     const [response, setResponse] = useState<Response>({});
     const [search, setSearch] = useState('javascript');
 
-    function getBooks(title: string = 'javascript') {
+    async function getBooks(title: string = 'javascript') {
         setResponse({});
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}`)
-          .then((response) => setResponse(response))
+        await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}`)
+          .then((response) => setResponse(response)).catch()
       }
     
       React.useEffect(() => {
