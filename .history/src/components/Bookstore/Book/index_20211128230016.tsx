@@ -5,7 +5,6 @@ import DetailsModal from './DetailsModal';
 
 import './book.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DefaultBook from '../../DefaultBook/DefaultBook';
 
 
 export type BsBookType = {
@@ -44,11 +43,18 @@ const BsBook = ({ book }: BsBookProps) => {
   return (
     <>
       {loadDetails()}
-      <DefaultBook title={book.title} imgSrc={book.thumbnail} >
+      <div className="book" >
+        <div className="book-image" onClick={() => setModalShow(true)}>
+          {book.thumbnail ? <img
+            alt={book.title}
+            src={book.thumbnail} />
+            : <img src="https://picsum.photos/200/260" alt="default" />}
+        </div>
+        <p className="book-title">{book.title}</p>
         <span className="fav-span" onClick={handleClic}>
           <AiFillHeart className={`fav-icon${book.isFav ? '--red' : ''}`} />
         </span>
-      </DefaultBook>
+      </div>
 
       <DetailsModal
         show={modalShow}

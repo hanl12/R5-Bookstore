@@ -19,6 +19,15 @@ export interface BookProps {
 const Book = ({ book }: BookProps) => {
   return(
     <DefaultBook title={book.volumeInfo.title} imgSrc={book.volumeInfo.imageLinks?.thumbnail} />
+  // <div className="book">
+  //   <div className="book-image">
+  //     {book.volumeInfo.imageLinks ? <img
+  //       alt={book.volumeInfo.title}
+  //       src={book.volumeInfo.imageLinks.thumbnail} />
+  //       : <img src="https://picsum.photos/200/260" alt="default" />}
+  //   </div>
+  //   <p className="book-title">{book.volumeInfo.title}</p>
+  // </div>
 )}
 
 export default Book

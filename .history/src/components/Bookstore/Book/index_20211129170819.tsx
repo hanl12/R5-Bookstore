@@ -49,6 +49,16 @@ const BsBook = ({ book }: BsBookProps) => {
           <AiFillHeart className={`fav-icon${book.isFav ? '--red' : ''}`} />
         </span>
       </DefaultBook>
+      {/* <div className="book" >
+        <div className="book-image" onClick={() => setModalShow(true)}>
+          {book.thumbnail ? <img
+            alt={book.title}
+            src={book.thumbnail} />
+            : <img src="https://picsum.photos/200/260" alt="default" />}
+        </div>
+        <p className="book-title">{book.title}</p>
+        
+      </div> */}
 
       <DetailsModal
         show={modalShow}
