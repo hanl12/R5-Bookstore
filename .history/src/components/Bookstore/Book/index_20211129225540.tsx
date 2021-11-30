@@ -44,14 +44,15 @@ const BsBook = ({ book }: BsBookProps) => {
   return (
     <>
       {loadDetails()}
-      <div>
-        <div className="clicArea" onClick={() => setModalShow(true)}>
-          <DefaultBook title={book.title} imgSrc={book.thumbnail} />
-        </div>
-        <span className="fav-span" onClick={handleClic}>
-          <AiFillHeart className={`fav-icon${book.isFav ? '--red' : ''}`} />
-        </span>
+      <div className="clicArea" onClick={() => setModalShow(true)}>
+        <DefaultBook title={book.title} imgSrc={book.thumbnail} >
+
+        </DefaultBook>
+
       </div>
+      <span className="fav-span" onClick={handleClic}>
+        <AiFillHeart className={`fav-icon${book.isFav ? '--red' : ''}`} />
+      </span>
 
 
       <DetailsModal

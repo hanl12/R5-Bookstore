@@ -4,7 +4,7 @@ export type DefaultBookProps = {
     imgSrc?: string,
 }
 
-const DefaultBook:React.FunctionComponent<DefaultBookProps> = ({title, imgSrc}) => {
+const DefaultBook:React.FunctionComponent<DefaultBookProps> = ({title, imgSrc, children}) => {
     return(
         <div className="book">
           <div className="book-image">

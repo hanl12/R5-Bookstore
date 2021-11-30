@@ -46,7 +46,9 @@ const BsBook = ({ book }: BsBookProps) => {
       {loadDetails()}
       <div>
         <div className="clicArea" onClick={() => setModalShow(true)}>
-          <DefaultBook title={book.title} imgSrc={book.thumbnail} />
+          <DefaultBook title={book.title} imgSrc={book.thumbnail} >
+
+          </DefaultBook>
         </div>
         <span className="fav-span" onClick={handleClic}>
           <AiFillHeart className={`fav-icon${book.isFav ? '--red' : ''}`} />
